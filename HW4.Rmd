@@ -230,13 +230,13 @@ fit <- constrOptim(theta = c(10, 0.1, 1), f = loglikeli, grad = grad.my,
                    control = list(fnscale = -1), hessian = TRUE)
 fit$par
 fit$convergence
-sqrt(Diag(-solve(fit$hessian)))
+Diag(-solve(fit$hessian))
 ```
 
 Using BFGS methods, set constrain to make $k$, $r$, $sigma^2$ nonnegative, we 
 get the MLE estimates $\hat{k} = 103.98$, $\hat{r} = 12.12$, $\hat{\sigma}^2 = 2.91$. 
 Using inverse of negative hessian, we have these estimates' variance to be 
-$52.03$, $348.20$, $1.69$ respectively.
+$2.7\times 10^3$, $1.2\times 10^5$, $2.8$ respectively.
 
 But there's problem that results will change dramatically with initial values. 
 I just tried several different initial values, get the estimates and compare 
